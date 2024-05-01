@@ -1,3 +1,4 @@
+# 工作流自动部署
 name: Build and Deploy
 on: [push]
 jobs:
@@ -7,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install and Build
-        run: |
+        run: | 
           yarn
           yarn build
       - name: Deploy
