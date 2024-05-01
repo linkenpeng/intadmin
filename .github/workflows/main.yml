@@ -3,7 +3,7 @@ name: Build and Deploy
 on: [push]
 jobs:
   build-and-deploy: 
-    runs-on: ubuntu-lastet
+    runs-on: ubuntu-latest
     steps: 
       - name: Checkout
         uses: actions/checkout@v3
