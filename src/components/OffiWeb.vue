@@ -1,4 +1,14 @@
 
+<script setup>
+import { ref } from 'vue'
+
+defineProps({
+  msg: String,
+})
+
+const count = ref(0)
+</script>
+
 <template>
     <div>
       <el-link href="https://cn.vuejs.org/" target="_blank">Vue</el-link>
