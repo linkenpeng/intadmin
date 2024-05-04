@@ -1,3 +1,3 @@
 <template>
-    <h1>我是About</h1>
+    <p>我是About Template.</p>
 </template>
