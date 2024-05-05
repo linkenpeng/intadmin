@@ -16,26 +16,11 @@
     data() {
       return {
         tableData: [
-        {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
-        },
-        {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
-        },
-        {
-          date: '2016-05-04',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
-        },
-        {
-          date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles'
-        }      ]
+          { score: 86, name: "张三", student_number: "100000001" },
+          { score: 72, name: "李四", student_number: "100000002" },
+          { score: 98, name: "王五", student_number: "100000003" },
+          { score: 45, name: "赵六", student_number: "100000004" }
+        ]
       };
     },
     methods: {

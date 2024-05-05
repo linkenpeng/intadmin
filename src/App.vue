@@ -7,9 +7,28 @@
       <router-link to="/user">User</router-link>
     </div>
   </div>
+
   <div id="main">
-    <router-view></router-view>
+    <div class="container">
+      
+      <div id="sidebar">
+        <ul>
+          <li>
+            <router-link to="/user/profile">个人信息</router-link>
+          </li>
+          <li>
+            <router-link to="/user/settings">用户设置</router-link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-body">
+        <router-view></router-view>
+      </div>
+      
+    </div>
   </div>
+
 </template>
 
 <style>
