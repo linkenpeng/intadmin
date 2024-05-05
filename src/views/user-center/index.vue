@@ -11,6 +11,11 @@
         </ul>
       </div>
       <div class="main-body">
+        <div>
+            <p>{{count}}</p>
+            <p><button @onclick="increase">increase</button></p>
+            <p><button @onclick="getters">getters</button></p>
+        </div>
         <router-view></router-view>
       </div>
     </div>
@@ -18,7 +23,11 @@
   
   <script>
   export default {
-    // JavaScript code would go here
+    computed: {
+        count() {
+            return this.$store.state.count
+        }
+    }
   }
   </script>
   
