@@ -1,34 +1,31 @@
 <template>
   <div id="header">
-    <h1>
-      <router-link to="/">LoGO</router-link>
-    </h1>
+    <h2>
+      <router-link to="/">Int Admin</router-link>
+    </h2>
     <div class="avatar">
       <router-link to="/user">User</router-link>
     </div>
   </div>
 
-  <div id="main">
-    <div class="container">
-      
-      <div id="sidebar">
-        <ul>
-          <li>
-            <router-link to="/user/profile">个人信息</router-link>
-          </li>
-          <li>
-            <router-link to="/user/settings">用户设置</router-link>
-          </li>
-        </ul>
-      </div>
-
-      <div class="main-body">
-        <router-view></router-view>
-      </div>
-      
+  <div class="container">
+    <div id="sidebar">
+      <ul>
+        <li>
+          <router-link to="/user/profile">个人信息</router-link>
+        </li>
+        <li>
+          <router-link to="/user/settings">用户设置</router-link>
+        </li>
+        <li>
+          <router-link to="/activity/index">活动设置</router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="main-body">
+      <router-view></router-view>
     </div>
   </div>
-
 </template>
 
 <style>
@@ -75,9 +72,7 @@ html, body {
   background-color: #eee;
   color: #666;
 }
-#main {
-  height: 100%;
-  padding-top: 54px;
-  box-sizing: border-box;
+.main-body {
+  padding: 10px;
 }
 </style>

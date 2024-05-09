@@ -4,6 +4,7 @@ import UserCenter from "../views/user-center/index.vue";
 
 const UserProfile = () => import("../views/user-center/Profile.vue");
 const UserSettings = () => import("../views/user-center/Settings.vue");
+const ActivityIndex = () => import("../views/activity/index.vue");
 const NotFound = () => import("../views/404.vue");
 
 const routes = [
@@ -11,6 +12,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/activity/index",
+    name: "ActivityIndex",
+    component: ActivityIndex
   },
   {
     path: "/user",
