@@ -1,35 +1,44 @@
 <template>
-    <el-form :model="form" label-position="left" label-width="100px">
-      <el-form-item label="活动名称">
+    <el-form :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
+      <el-form-item label="活动名称" prop="name">
         <el-input v-model="form.name" size="medium"></el-input>
       </el-form-item>
-      <el-form-item label="活动区域">
+      <el-form-item label="活动区域" prop="region">
         <el-select v-model="form.region" placeholder="选择区域" size="large">
           <el-option label="上海" value="shanghai"></el-option>
           <el-option label="北京" value="beijing"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="活动时间" size="large">
-        <el-date-picker v-model="form.date1" type="date" placeholder="选择日期"></el-date-picker>
-        <el-time-picker v-model="form.date2" placeholder="选择时间"></el-time-picker>
+      <el-form-item label="活动时间" size="large" required>
+        <el-col :span="11">
+          <el-form-item prop="date1">
+            <el-date-picker v-model="form.date1" type="date" placeholder="选择日期"></el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="2" class="line">-</el-col>
+        <el-col :span="11">
+          <el-form-item prop="date2">
+            <el-time-picker v-model="form.date2" placeholder="选择时间"></el-time-picker>
+          </el-form-item>
+        </el-col>
       </el-form-item>
-      <el-form-item label="是否直播" size="large">
+      <el-form-item label="是否直播" size="large" prop="live">
         <el-switch v-model="form.live"></el-switch>
       </el-form-item>
-      <el-form-item label="活动类型" size="large">
+      <el-form-item label="活动类型" size="large" prop="type">
         <el-checkbox-group v-model="form.type">
           <el-checkbox label="线上活动" name="type"></el-checkbox>
           <el-checkbox label="促销活动" name="type"></el-checkbox>
           <el-checkbox label="线下活动" name="type"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="场地资源"  size="large">
+      <el-form-item label="场地资源"  size="large" prop="resource">
         <el-radio-group v-model="form.resource">
           <el-radio label="赞助"></el-radio>
           <el-radio label="自助"></el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="备注" size="small">
+      <el-form-item label="备注" size="small" prop="desc">
         <el-input v-model="form.desc" type="textarea"></el-input>
       </el-form-item>
       <el-form-item>
@@ -42,6 +51,7 @@
   <script>
   export default {
     data() {
+      const that = this
       return {
         form: {
           name: '',
@@ -66,7 +76,18 @@
             { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
           ],
           date2: [
-            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+            { 
+              type: 'date', 
+              required: true, 
+              validator: (rule, value, callback) => {
+                const h = new Date(value).getHours()
+                if ((h > 20 || h < 6) && that.form.type.includes('线下活动')) {
+                  return callback(new Error('线下活动不能晚上举行'));
+                }
+                return callback();
+              },
+              trigger: 'change' 
+            }
           ],
           type: [
             { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
